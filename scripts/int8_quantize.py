@@ -11,6 +11,9 @@ MODEL_ID = "baidu/Unlimited-OCR-2"
 
 config = BitsAndBytesConfig(
     load_in_8bit=True,
+    # Keep the vision side in bf16: SAM feeds 4D tensors to its linears,
+    # which bitsandbytes' int8 matmul rejects (2D/3D only).
+    llm_int8_skip_modules=["sam_model", "vision_model", "projector", "lm_head"],
 )
 
 tokenizer = AutoTokenizer.from_pretrained(
