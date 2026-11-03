@@ -3,7 +3,7 @@
 #SBATCH --output=logs/ocr_%j.out
 #SBATCH --error=logs/ocr_%j.err
 #SBATCH --partition=defq
-#SBATCH --gres=gpu:1g.35gb:1
+#SBATCH --gres=gpu:3g.71gb:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=01:00:00
