@@ -2,13 +2,14 @@
 #SBATCH --job-name=ocr_bf16
 #SBATCH --output=logs/ocr_%j.out
 #SBATCH --error=logs/ocr_%j.err
-#SBATCH --partition=gpu
-#SBATCH --gres=gpu:1
+#SBATCH --partition=defq
+#SBATCH --gres=gpu:1g.35gb:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=01:00:00
 # Usage (from the project root): sbatch run_ocr.sbatch data/<image> [output_dir]
-# Check partition names with: sinfo -s
+# The GPU node is split into MIG slices (sinfo -o "%P %G"): 1g.18gb, 1g.35gb, 3g.71gb, 7g.141gb.
+# Keep the same slice for every run so bf16 vs quantized timings are comparable.
 
 set -eo pipefail
 
