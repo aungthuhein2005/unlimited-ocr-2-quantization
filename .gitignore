@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+.env
+
+# Slurm logs (folder kept via .gitkeep so sbatch can write into it)
+logs/*
+!logs/.gitkeep
+slurm-*.out
+
+# Model weights, caches and quantized checkpoints: too large for git
+hf_cache/
+.cache/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.onnx
+checkpoints/
+quantized_models/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
