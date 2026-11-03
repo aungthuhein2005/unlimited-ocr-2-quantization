@@ -8,11 +8,12 @@
 #SBATCH --mem=128G
 #SBATCH --time=01:00:00
 # Usage (from the project root): sbatch test_quant.sbatch scripts/int8_quantize.py
-#                                sbatch test_quant.sbatch scripts/int4_quantize.py
+#                                sbatch test_quant.sbatch scripts/int4_quantize.py [--image ...] [--output ...]
 
 set -eo pipefail
 
-SCRIPT="${1:?Usage: sbatch test_quant.sbatch scripts/<script>.py}"
+SCRIPT="${1:?Usage: sbatch test_quant.sbatch scripts/<script>.py [args]}"
+shift
 
 # Ignore packages in ~/.local so only the llm env's own packages are used
 export PYTHONNOUSERSITE=1
@@ -26,4 +27,4 @@ cd "$SLURM_SUBMIT_DIR"
 
 python -c "import torch, bitsandbytes as bnb; print('torch', torch.__version__, 'bnb', bnb.__version__, 'gpu', torch.cuda.get_device_name())"
 
-python "$SCRIPT"
+python "$SCRIPT" "$@"

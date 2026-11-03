@@ -7,14 +7,14 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=128G
 #SBATCH --time=01:00:00
-# Usage (from the project root): sbatch run_ocr.sbatch data/<image> [output_dir]
+# Usage (from the project root): sbatch run_ocr.sbatch [data/<image>] [results/<name>.json]
 # The GPU node is split into MIG slices (sinfo -o "%P %G"): 1g.18gb, 1g.35gb, 3g.71gb, 7g.141gb.
 # Keep the same slice for every run so bf16 vs quantized timings are comparable.
 
 set -eo pipefail
 
-IMAGE="${1:?Usage: sbatch run_ocr.sbatch data/<image> [output_dir]}"
-OUTPUT="${2:-results/bf16}"
+IMAGE="${1:-data/image.png}"
+OUTPUT="${2:-results/bf16.json}"
 
 # Ignore packages in ~/.local so only the llm env's own packages are used
 export PYTHONNOUSERSITE=1
@@ -26,7 +26,7 @@ set -u
 
 cd "$SLURM_SUBMIT_DIR"
 
-# Log GPU and driver: torch 2.15 (CUDA 13) needs driver >= 580
+# Log GPU and driver
 nvidia-smi
 python -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda, 'available', torch.cuda.is_available())"
 

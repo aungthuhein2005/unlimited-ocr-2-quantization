@@ -1,23 +1,25 @@
 
 # scripts/run_ocr.py
+# bf16 baseline
 import argparse
-import json
 import time
-from pathlib import Path
 
 import torch
 from transformers import AutoModel, AutoTokenizer
 
+from bench import run
+
 MODEL_ID = "baidu/Unlimited-OCR-2"
+
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image", required=True)
-    parser.add_argument("--output", default="results/bf16")
+    parser.add_argument("--image", default="data/image.png")
+    parser.add_argument("--output", default="results/bf16.json")
+    parser.add_argument("--runs", type=int, default=3)
     args = parser.parse_args()
 
-    output_dir = Path(args.output)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    start = time.perf_counter()
 
     tokenizer = AutoTokenizer.from_pretrained(
         MODEL_ID, trust_remote_code=True
@@ -30,47 +32,13 @@ def main():
         torch_dtype=torch.bfloat16,
     ).eval().cuda()
 
+    torch.cuda.synchronize()
+    load_seconds = time.perf_counter() - start
+
     print(f"GPU: {torch.cuda.get_device_name()}")
 
-    # Warm up before measured requests.
-    # eval_mode=True turns off token streaming to stdout, which would skew latency.
-    for _ in range(2):
-        model.infer(
-            tokenizer,
-            image_file=args.image,
-            output_path=str(output_dir),
-            save_results=False,
-            eval_mode=True,
-        )
+    run(model, tokenizer, "bf16", args.image, args.output, load_seconds, runs=args.runs)
 
-    torch.cuda.synchronize()
-    torch.cuda.reset_peak_memory_stats()
-    start = time.perf_counter()
-
-    prediction = model.infer(
-        tokenizer,
-        image_file=args.image,
-        output_path=str(output_dir),
-        save_results=False,
-        eval_mode=True,
-    )
-
-    torch.cuda.synchronize()
-    latency = time.perf_counter() - start
-    peak_gb = (
-        torch.cuda.max_memory_allocated() / 1024**3
-    )
-
-    result = {
-        "prediction": str(prediction),
-        "latency_seconds": latency,
-        "peak_allocated_gb": peak_gb,
-    }
-
-    with open(output_dir / "result.json", "w") as f:
-        json.dump(result, f, indent=2)
-
-    print(json.dumps(result, indent=2))
 
 if __name__ == "__main__":
     main()
