@@ -1,0 +1,32 @@
+#!/bin/bash
+#SBATCH --job-name=ocr_bf16
+#SBATCH --output=logs/ocr_%j.out
+#SBATCH --error=logs/ocr_%j.err
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=32G
+#SBATCH --time=01:00:00
+# Usage (from the project root): sbatch run_ocr.sbatch data/<image> [output_dir]
+# Check partition names with: sinfo -s
+
+set -eo pipefail
+
+IMAGE="${1:?Usage: sbatch run_ocr.sbatch data/<image> [output_dir]}"
+OUTPUT="${2:-results/bf16}"
+
+# Ignore packages in ~/.local so only the llm env's own packages are used
+export PYTHONNOUSERSITE=1
+
+source /cm/shared/apps/miniconda3/etc/profile.d/conda.sh
+conda activate llm
+# Enabled after activation: conda's activate scripts can reference unset variables
+set -u
+
+cd "$SLURM_SUBMIT_DIR"
+
+# Log GPU and driver: torch 2.15 (CUDA 13) needs driver >= 580
+nvidia-smi
+python -c "import torch; print('torch', torch.__version__, 'cuda', torch.version.cuda, 'available', torch.cuda.is_available())"
+
+python scripts/run_ocr.py --image "$IMAGE" --output "$OUTPUT"
