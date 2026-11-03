@@ -4,8 +4,8 @@
 #SBATCH --error=logs/ocr_%j.err
 #SBATCH --partition=defq
 #SBATCH --gres=gpu:3g.71gb:1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=32G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=128G
 #SBATCH --time=01:00:00
 # Usage (from the project root): sbatch run_ocr.sbatch data/<image> [output_dir]
 # The GPU node is split into MIG slices (sinfo -o "%P %G"): 1g.18gb, 1g.35gb, 3g.71gb, 7g.141gb.
