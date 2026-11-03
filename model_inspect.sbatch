@@ -7,12 +7,17 @@
 #SBATCH --time=02:00:00
 # inspect_model.py runs on CPU, so no GPU is requested. Add --partition=<name> if
 # your cluster's default partition isn't suitable (list them with: sinfo -s).
-# Submit from the project root after creating the log folder: mkdir -p logs
+# Submit from the project root (logs/ comes with the repo).
 
-set -euo pipefail
+set -eo pipefail
+
+# Ignore packages in ~/.local so only the llm env's own packages are used
+export PYTHONNOUSERSITE=1
 
 source /cm/shared/apps/miniconda3/etc/profile.d/conda.sh
 conda activate llm
+# Enabled after activation: conda's activate scripts can reference unset variables
+set -u
 
 cd "$SLURM_SUBMIT_DIR"
 
