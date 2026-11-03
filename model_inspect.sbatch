@@ -11,7 +11,7 @@
 
 set -euo pipefail
 
-source ~/miniconda3/etc/profile.d/conda.sh
+source /cm/shared/apps/miniconda3/etc/profile.d/conda.sh
 conda activate llm
 
 cd "$SLURM_SUBMIT_DIR"
