@@ -80,7 +80,15 @@ for name in ("config.json", "tokenizer_config.json"):
 
 saved = json.loads((output / "config.json").read_text(encoding="utf-8"))
 assert "quantization_config" in saved, "config.json has no quantization_config"
-assert "auto_map" in saved, "config.json has no auto_map"
+
+# save_pretrained writes the DASH attention settings as the model code adjusted them at load time
+# (sparse_attention_config: dash_topk_blocks 12 -> 64, dash_stage0 head_cls -> indexer, per-layer
+# lists collapsed). Reloading with those reads pages as garbage. Keep the original config and only
+# add the quantization settings.
+config_out = json.loads((source / "config.json").read_text(encoding="utf-8"))
+config_out["quantization_config"] = saved["quantization_config"]
+(output / "config.json").write_text(json.dumps(config_out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+assert "auto_map" in config_out, "config.json has no auto_map"
 
 
 # 3. Model card with benchmark numbers from results/*.json
