@@ -10,14 +10,12 @@ from transformers import (
     BitsAndBytesConfig,
 )
 
-from bench import run
+from bench import add_image_args, run
 
 MODEL_ID = "baidu/Unlimited-OCR-2"
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--image", default="data/image.png")
-parser.add_argument("--output", default="results/int4.json")
-parser.add_argument("--runs", type=int, default=3)
+add_image_args(parser, "results/int4.json")
 args = parser.parse_args()
 
 config = BitsAndBytesConfig(
@@ -47,6 +45,7 @@ load_seconds = time.perf_counter() - start
 print("Loaded NF4 candidate")
 
 run(
-    model, tokenizer, "int4_nf4", args.image, args.output, load_seconds, runs=args.runs,
+    model, tokenizer, "int4_nf4", args.images, args.output, load_seconds,
+    warmup=args.warmup, runs=args.runs,
     notes="bitsandbytes NF4 + double quant, all linear layers (no skip list)",
 )

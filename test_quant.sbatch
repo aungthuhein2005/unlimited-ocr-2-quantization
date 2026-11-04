@@ -8,7 +8,7 @@
 #SBATCH --mem=128G
 #SBATCH --time=01:00:00
 # Usage (from the project root): sbatch test_quant.sbatch scripts/int8_quantize.py
-#                                sbatch test_quant.sbatch scripts/int4_quantize.py [--image ...] [--output ...]
+#                                sbatch test_quant.sbatch scripts/int4_quantize.py [--images ...] [--output ...]
 
 set -eo pipefail
 

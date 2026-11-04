@@ -10,15 +10,13 @@ from transformers import (
     BitsAndBytesConfig,
 )
 
-from bench import run
+from bench import add_image_args, run
 
 MODEL_ID = "baidu/Unlimited-OCR-2"
 SKIP_MODULES = ["sam_model", "vision_model", "projector", "lm_head"]
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--image", default="data/image.png")
-parser.add_argument("--output", default="results/int8.json")
-parser.add_argument("--runs", type=int, default=3)
+add_image_args(parser, "results/int8.json")
 args = parser.parse_args()
 
 config = BitsAndBytesConfig(
@@ -49,6 +47,7 @@ load_seconds = time.perf_counter() - start
 print("Loaded INT8 candidate")
 
 run(
-    model, tokenizer, "int8", args.image, args.output, load_seconds, runs=args.runs,
+    model, tokenizer, "int8", args.images, args.output, load_seconds,
+    warmup=args.warmup, runs=args.runs,
     notes=f"bitsandbytes LLM.int8, skipped (bf16): {SKIP_MODULES}",
 )

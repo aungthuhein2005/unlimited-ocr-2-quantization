@@ -7,16 +7,14 @@ import time
 import torch
 from transformers import AutoModel, AutoTokenizer
 
-from bench import run
+from bench import add_image_args, run
 
 MODEL_ID = "baidu/Unlimited-OCR-2"
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image", default="data/image.png")
-    parser.add_argument("--output", default="results/bf16.json")
-    parser.add_argument("--runs", type=int, default=3)
+    add_image_args(parser, "results/bf16.json")
     args = parser.parse_args()
 
     start = time.perf_counter()
@@ -37,7 +35,10 @@ def main():
 
     print(f"GPU: {torch.cuda.get_device_name()}")
 
-    run(model, tokenizer, "bf16", args.image, args.output, load_seconds, runs=args.runs)
+    run(
+        model, tokenizer, "bf16", args.images, args.output, load_seconds,
+        warmup=args.warmup, runs=args.runs,
+    )
 
 
 if __name__ == "__main__":
