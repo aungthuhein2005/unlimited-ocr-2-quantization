@@ -85,6 +85,7 @@ GB = GiB (1024³ bytes).
 - **Few pages.** 3 pages, ~6,400 characters in total; CER differences of a few characters are not
   significant.
 - **NF4 and INT8 are not like-for-like:** NF4 also quantizes the vision encoders, INT8 does not.
+  (Resolved in the 17-page run with NF4 skip-vision.)
 - **Ground truth is a manual transcription.** Uncertain spots: the dot after "102" (`en_image`) and
   `…` vs `...` (`en_image2`).
 - **Margin line numbers are excluded** from `en_image2.txt`; every variant transcribes them, so they
@@ -164,9 +165,72 @@ here is computed from the same saved predictions with the same tag stripping as 
 
 Time = median of 3 runs; tok = output tokens; GB = peak allocated GPU memory.
 
+## 17-page benchmark (jobs 6654–6657)
+
+3 real pages + 14 synthetic pages from `scripts/make_test_pages.py` (exact ground truth). Same
+`3g.71gb` slice, 1 warm-up + 3 timed runs per page. New variant **NF4 skip-vision**:
+`int4_quantize.py --skip-vision`, same bf16 skip list as INT8.
+
+### Synthetic pages
+
+| Page | Tests |
+|---|---|
+| `syn_01_en_report` | plain report, serif |
+| `syn_02_en_twocol` | two columns (reading order) |
+| `syn_03_en_form` | form: names, dates, email, phone |
+| `syn_04_en_numbers` | invoice: digits, amounts, codes |
+| `syn_05_en_degraded` | blur + 1.5° tilt + noise |
+| `syn_06_en_lowres` | tiny image (413×584) |
+| `syn_07_en_code` | monospace, shell commands, paths |
+| `syn_08_de` / `09_fr` / `10_es` | German, French, Spanish accents |
+| `syn_11_ru` | Russian (Cyrillic) |
+| `syn_12_zh` / `13_ja` / `14_ko` | Chinese, Japanese, Korean |
+
+### Summary
+
+| | bf16 | INT8 | NF4 (all layers) | NF4 skip-vision |
+|---|---|---|---|---|
+| Peak memory | 7.39 GB | 4.88 GB | **3.17 GB** | 3.69 GB |
+| Mean time per page | **6.73 s** | 16.88 s (2.5×) | 7.86 s (+17%) | 7.93 s (+18%) |
+| Tokens/s | **38.0** | 15.1 | 32.5 | 32.2 |
+| Mean CER (17 pages) | 0.069% | 0.075% | **0.068%** | 0.078% |
+| Mean WER (17 pages) | 0.247% | 0.247% | **0.234%** | **0.234%** |
+| Same output in all runs | yes | yes | yes | yes |
+
+### CER per page
+
+| Page | bf16 | INT8 | NF4 | NF4 skip-vision |
+|---|---|---|---|---|
+| `en_image` (handwritten) | **0.30%** | 0.41% | 0.41% | 0.51% |
+| `en_image1` (photo) | 0.07% | 0.07% | **0.04%** | **0.04%** |
+| `en_image2` (small scan) | 0.79% | 0.79% | **0.72%** | 0.79% |
+| all 14 synthetic pages | 0.00% | 0.00% | 0.00% | 0.00% |
+
+The real-page numbers from `bench.py` match the earlier local calculation exactly, which confirms
+the scoring code.
+
+### What the 17-page run shows
+
+1. **Speed and memory ratios hold across very different pages.** NF4 ~17% slower, INT8 2.5× slower.
+2. **No variant breaks** on two columns, forms, numbers, code, a degraded copy, a tiny image, or six
+   other languages (incl. Chinese, Japanese, Korean): every synthetic page is read perfectly.
+3. **Keeping vision in bf16 does not help.** NF4 skip-vision uses +0.52 GB, is no faster, and is not
+   more accurate (slightly worse on the handwritten page). On this test set, quantizing the vision
+   encoders to NF4 does no measurable harm.
+4. **All four variants have the same accuracy within noise** (~0.01% CER, a few characters out of
+   ~20,000). Memory and speed are the real differences.
+5. **The synthetic pages are too clean to separate variants.** All differences come from the 3 real
+   pages, so ranking accuracy needs more hard real pages (scans, photos, small print, handwriting).
+
+### Conclusion
+
+**NF4 on all layers is the best bitsandbytes option**: 57% less peak memory than bf16 (7.39 → 3.17 GB),
+~17% slower, same accuracy. INT8 is not worth using. Protecting the vision encoders costs memory
+with no measured benefit.
+
 ## Next steps
 
-1. Rerun the three jobs so the JSON files contain the 3-page accuracy.
-2. Run NF4 with the same skip list as INT8, to separate the effect of quantizing the vision encoders.
+1. Add harder real pages (scans, phone photos, small print, handwriting, tables) with ground truth.
+2. Try experts-only NF4 (attention/shared experts in bf16) to test mixed precision.
 3. Try GPTQ (see [note3.md](note3.md)).
-4. Add more pages (printed scans, tables, other languages) before drawing firm conclusions.
+4. Compare with community builds (GGUF, LiteRT-LM int8) on the same pages.
