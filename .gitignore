@@ -26,6 +26,7 @@ hf_cache/
 *.onnx
 checkpoints/
 quantized_models/
+export/
 
 # Editors / OS
 .vscode/
