@@ -141,17 +141,22 @@ tags:
 ## Usage
 
 ```python
+import torch
 from transformers import AutoModel, AutoTokenizer
 
 repo = "{args.repo_id}"
 tokenizer = AutoTokenizer.from_pretrained(repo, trust_remote_code=True)
-model = AutoModel.from_pretrained(repo, trust_remote_code=True, device_map="auto").eval()
+model = AutoModel.from_pretrained(
+    repo, trust_remote_code=True, device_map="auto", torch_dtype=torch.bfloat16,
+).eval()
 
 text = model.infer(tokenizer, image_file="page.png", eval_mode=True)
 print(text)
 ```
 
 No `quantization_config` is needed: the settings are stored in `config.json`.
+`torch_dtype=torch.bfloat16` is required: without it the non-quantized layers load in float16 and
+inference fails with `Input type (c10::BFloat16) and bias type (c10::Half) should be the same`.
 
 ## License and attribution
 
@@ -165,7 +170,11 @@ print(f"Saved {output} ({size:.2f} GB on disk)")
 
 # 4. Reload from the export folder only (no quantization_config) and read one page
 tokenizer = AutoTokenizer.from_pretrained(output, trust_remote_code=True)
-model = AutoModel.from_pretrained(output, trust_remote_code=True, device_map="auto").eval()
+# torch_dtype is required: without it transformers loads the non-quantized layers of a bnb model
+# in float16, and the model's bf16 image input then fails in the SAM patch embedding
+model = AutoModel.from_pretrained(
+    output, trust_remote_code=True, device_map="auto", torch_dtype=torch.bfloat16,
+).eval()
 print(f"Reloaded, weights {model.get_memory_footprint() / GB:.2f} GB")
 
 prediction = str(model.infer(tokenizer, image_file=args.test_image, save_results=False, eval_mode=True))
