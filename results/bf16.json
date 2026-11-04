@@ -1,0 +1,85 @@
+{
+  "variant": "bf16",
+  "notes": null,
+  "load_seconds": 6.220464359968901,
+  "memory": {
+    "weights_gb": 6.228658206760883,
+    "allocated_after_load_gb": 6.320075988769531
+  },
+  "settings": {
+    "warmup_runs_per_image": 1,
+    "timed_runs_per_image": 3
+  },
+  "summary": {
+    "images": 3,
+    "images_with_ground_truth": 1,
+    "peak_allocated_gb_max": 7.386107921600342,
+    "latency_median_seconds_mean": 15.8120161468784,
+    "tokens_per_second": 38.40960745877006,
+    "cer_mean": 0.003048780487804878,
+    "wer_mean": 0.016574585635359115,
+    "all_deterministic": true
+  },
+  "images": [
+    {
+      "image": "data/en_image.png",
+      "peak_allocated_gb": 7.386107921600342,
+      "peak_reserved_gb": 7.86328125,
+      "latency_seconds": [
+        10.030060034245253,
+        10.02404785901308,
+        10.009739100933075
+      ],
+      "latency_median_seconds": 10.02404785901308,
+      "output_tokens": 382,
+      "tokens_per_second": 38.108357559020064,
+      "accuracy": {
+        "ground_truth": "data/en_image.txt",
+        "cer": 0.003048780487804878,
+        "wer": 0.016574585635359115
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>header[645, 119, 754, 137]<FORK>EvD1200-0\n<BLOCK>title<LEVEL1>[214, 160, 517, 191]<FORK>Only a matter of style?\n<BLOCK>text[210, 209, 770, 350]<FORK>For educational purposes we analyse the opening pages of an 11-page article that appeared in The American Mathematical Monthly, Volume 102. Number 2/February 1995. We have added line numbers in the right margin.\n<BLOCK>text[210, 359, 767, 431]<FORK>line 4: Since in this article, squares don't get alternating colours, it could be argued that the term \"chessboard\" is misplaced.\n<BLOCK>text[209, 438, 763, 671]<FORK>line 4: The introduction of the name \"B\" seems unnecessary: it is used -in the combination \"the board B\"- in the text for Figure 1 and in line 71; in both cases just \"the board\" would have done fine. In line 77 occurs the last use of B, viz. in \"X⊂B\", which is dubious since B was a board and not a set; in line 77, I would have preferred \"Given a set X of cells\".\n<BLOCK>text[211, 677, 790, 750]<FORK>line 7/8: The first move, being a move like any other, does not deserve a separate description. The term \"step\" is redundant.\n<BLOCK>text[211, 757, 748, 786]<FORK>line 8: Why not \"a move consists of\"?\n<BLOCK>text[210, 793, 721, 843]<FORK>line 10/11: At this stage the italics are puzzling, since a move is possible if,"
+    },
+    {
+      "image": "data/en_image1.png",
+      "peak_allocated_gb": 7.386107921600342,
+      "peak_reserved_gb": 7.86328125,
+      "latency_seconds": [
+        18.481104385107756,
+        18.462588608264923,
+        18.4566390812397
+      ],
+      "latency_median_seconds": 18.462588608264923,
+      "output_tokens": 708,
+      "tokens_per_second": 38.34781866303722,
+      "accuracy": null,
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>header[149, 72, 248, 144]<FORK>\n<BLOCK>text[145, 154, 838, 186]<FORK>Smart Engines introduced OCR for text recognition in 102 languages at a speed of 15 pages per second\n<BLOCK>text[145, 204, 858, 285]<FORK>Smart Engines scientists today announced a new generation of Smart Document Engine for instant and precise recognition of various documents and forms. The innovative system makes it possible to quickly scan the text documents and extract the necessary data using a mobile phone. Thus, Smart Engines has become the universal software supplier enabling businesses to fully automate and optimize document management workflows.\n<BLOCK>text[145, 301, 869, 381]<FORK>With the new mode, the Smart Document Engine user can instantly digitize any documents and hardcopies. Prior to that, for this purpose, they had to use a conventional flatbed scanner. Now all they have to do is put the correct document on the smartphone camera. The Smart Document Engine detects the document, recognises it, even if the paper is bent or damaged, and then displays the recognition results in a separate window.\n<BLOCK>text[145, 397, 837, 446]<FORK>“We can confidently state that scanners will be part of the past very soon. The scanner scans a printed sheet in 15-20 seconds, while our technology at the same time can both take a picture and recognize 3 sheets”, commented Smart Engines CEO Vladimir Arlazarov, PhD in Computer Science.\n<BLOCK>text[145, 461, 863, 526]<FORK>Compared to the earlier version, Smart Document Engine gives the user new tools to monitor recognition results. The system displays the coordinates of all text objects in the image and other supporting information. For example, the degree of recognition confidence in a text string, a word, or each individual character. By using this data, the system user can further analyze the recognition result.\n<BLOCK>text[145, 541, 861, 588]<FORK>So, Smart Document Engine helps businesses not only to optimize the document entry processes, but also to solve other problems such as, for instance, finding documents in real time by keywords or creating electronic archives.\n<BLOCK>text[145, 604, 848, 669]<FORK>“We are proud to say that Smart Engines provides all the tools required to manage business documents. We can recognize ID documents, bank cards, barcodes, bills, payments and so on. The technology that allows you to recognize documents from a piece of paper is another of our great accomplishments, to which we have been pursuing for 10 years”, – adds Vladimir Arlazarov.\n<BLOCK>text[144, 684, 828, 734]<FORK>The system supports recognition of documents in 20 languages, including English, French, Spanish, German, Italian, Polish, Swedish, Czech, Croatian, Serbian, Bulgarian, Kazakh, Cyrillic and Latin, Generalized Latin, Turkish, Chinese, Korean, Japanese, Arabic and Hebrew.\n<BLOCK>text[142, 749, 859, 798]<FORK>It supports a wide class of operating systems, including specialized operating systems for personal data processing: Cent OS, Ubuntu, Red Hat Enterprise Linux, SUSE Linux Enterprise Server, Arch Linux and other Linux distributions, MS Windows, macOS, iOS, Android.\n<BLOCK>title[142, 814, 298, 829]<FORK>Smart Engines Team"
+    },
+    {
+      "image": "data/en_image2.png",
+      "peak_allocated_gb": 6.792439937591553,
+      "peak_reserved_gb": 7.86328125,
+      "latency_seconds": [
+        18.907278046011925,
+        19.03912938013673,
+        18.9494119733572
+      ],
+      "latency_median_seconds": 18.9494119733572,
+      "output_tokens": 732,
+      "tokens_per_second": 38.62916701738234,
+      "accuracy": null,
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[464, 85, 533, 104]<FORK>Text 1\n<BLOCK>text[115, 119, 849, 210]<FORK>This is an edited extract from a newspaper article by Charles Dickens. It appeared in his own newspaper Household Words and concerned \"ragged schooling\". Ragged schools provided education for poor children at a time when you either had to pay or be part of a church. It was published on 13th March 1852.\n<BLOCK>title[115, 224, 327, 243]<FORK>A Sleep to Startle Us\n<BLOCK>text[92, 253, 884, 432]<FORK>A few years hence, and we of the present generation will find it not an easy task to recall, in the thriving street which will arise upon this spot, the wooden barriers and hoardings - the passages that lead to nothing - the glimpses of 5obscene Field Lane and Saffron Hill - the mounds of earth, old bricks, and oyster-shells - the arched foundations of unbuilt houses - the backs of miserable tenements with patched windows - the odds and ends of fever-stricken courts and alleys - which are the present features of the place. Not less perplexing do I find it now, to reckon how many years have passed since I 10traversed these byways one night before they were laid bare, to find out the first Ragged School.\n<BLOCK>text[92, 440, 863, 515]<FORK>If I say it is ten years ago, I leave a handsome margin. The discovery was then newly made ... that out of these noxious sinks where they were born to perish, and where the general ruin was hatching day and night, the people 15 may come to be improved.\n<BLOCK>text[115, 522, 816, 561]<FORK>I found my first Ragged School, in an obscure place called West Street, Saffron Hill, pitifully struggling for life, under every disadvantage.\n<BLOCK>text[90, 569, 867, 677]<FORK>The number of houseless creatures who resorted to it, and who were necessarily turned out when it closed, to hide where they could in heaps of 20moral and physical pollution, filled the managers with pity. To relieve some of the more constant and deserving scholars, they rented a wretched house, where a few common beds - a dozen or a dozen-and-a-half perhaps - were made upon the floor.\n<BLOCK>text[90, 685, 872, 777]<FORK>The air was bad; the dark and ruinous building, with its small close rooms, 25 was quite unsuited to the purpose; and a general supervision of the scattered sleepers was impossible. I had great doubts at the time whether, excepting that they found a crazy shelter for their heads, they were better there than in the streets.\n<BLOCK>text[90, 785, 863, 913]<FORK>All were employed in mending, either their own dilapidated clothes or shoes, 30 or the dilapidated clothes or shoes of some of the other pupils. They were of all ages, from young boys to old men. They were quiet, and intent upon their work. Some of them were almost as unused to it as I should have shown myself to be if I had tried my hand, but all were deeply interested and profoundly anxious to do it somehow or other. They presented a very 35 remarkable instance of the general desire there is, after all, even in the"
+    }
+  ],
+  "environment": {
+    "gpu": "NVIDIA H200 MIG 3g.71gb",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "transformers": "4.52.1",
+    "bitsandbytes": "0.50.2",
+    "timestamp": "2026-11-04T07:45:17+00:00"
+  }
+}
