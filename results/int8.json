@@ -1,7 +1,7 @@
 {
   "variant": "int8",
   "notes": "bitsandbytes LLM.int8, skipped (bf16): ['sam_model', 'vision_model', 'projector', 'lm_head']",
-  "load_seconds": 8.325218450278044,
+  "load_seconds": 8.220597833395004,
   "memory": {
     "weights_gb": 3.797246463596821,
     "allocated_after_load_gb": 3.8164329528808594
@@ -11,13 +11,13 @@
     "timed_runs_per_image": 3
   },
   "summary": {
-    "images": 3,
-    "images_with_ground_truth": 1,
-    "peak_allocated_gb_max": 4.881556510925293,
-    "latency_median_seconds_mean": 39.53156587729851,
-    "tokens_per_second": 15.363250097869306,
-    "cer_mean": 0.0040650406504065045,
-    "wer_mean": 0.016574585635359115,
+    "images": 17,
+    "images_with_ground_truth": 17,
+    "peak_allocated_gb_max": 4.881565570831299,
+    "latency_median_seconds_mean": 16.87822109986754,
+    "tokens_per_second": 15.132623467522109,
+    "cer_mean": 0.0007461778683847309,
+    "wer_mean": 0.0024702985254114822,
     "all_deterministic": true
   },
   "images": [
@@ -26,13 +26,13 @@
       "peak_allocated_gb": 4.881555080413818,
       "peak_reserved_gb": 5.359375,
       "latency_seconds": [
-        25.421314273029566,
-        25.411671318113804,
-        25.359534192830324
+        25.3609969727695,
+        25.227320808917284,
+        25.29989479854703
       ],
-      "latency_median_seconds": 25.411671318113804,
+      "latency_median_seconds": 25.29989479854703,
       "output_tokens": 382,
-      "tokens_per_second": 15.032462651431546,
+      "tokens_per_second": 15.098877012798418,
       "accuracy": {
         "ground_truth": "data/en_image.txt",
         "cer": 0.0040650406504065045,
@@ -46,14 +46,18 @@
       "peak_allocated_gb": 4.881556510925293,
       "peak_reserved_gb": 5.359375,
       "latency_seconds": [
-        46.44301563501358,
-        46.313421584665775,
-        46.39641734957695
+        46.04705739021301,
+        45.979681849479675,
+        46.05138714984059
       ],
-      "latency_median_seconds": 46.39641734957695,
+      "latency_median_seconds": 46.04705739021301,
       "output_tokens": 708,
-      "tokens_per_second": 15.259798933730725,
-      "accuracy": null,
+      "tokens_per_second": 15.375575338077534,
+      "accuracy": {
+        "ground_truth": "data/en_image1.txt",
+        "cer": 0.0007163323782234957,
+        "wer": 0.0045871559633027525
+      },
       "deterministic": true,
       "prediction": "<PAGE><BLOCK>header[149, 73, 248, 144]<FORK>\n<BLOCK>title[145, 154, 838, 186]<FORK>Smart Engines introduced OCR for text recognition in 102 languages at a speed of 15 pages per second\n<BLOCK>text[145, 204, 858, 285]<FORK>Smart Engines scientists today announced a new generation of Smart Document Engine for instant and precise recognition of various documents and forms. The innovative system makes it possible to quickly scan the text documents and extract the necessary data using a mobile phone. Thus, Smart Engines has become the universal software supplier enabling businesses to fully automate and optimize document management workflows.\n<BLOCK>text[145, 301, 869, 381]<FORK>With the new mode, the Smart Document Engine user can instantly digitize any documents and hardcopies. Prior to that, for this purpose, they had to use a conventional flatbed scanner. Now all they have to do is put the correct document on the smartphone camera. The Smart Document Engine detects the document, recognises it, even if the paper is bent or damaged, and then displays the recognition results in a separate window.\n<BLOCK>text[145, 397, 837, 446]<FORK>“We can confidently state that scanners will be part of the past very soon. The scanner scans a printed sheet in 15-20 seconds, while our technology at the same time can both take a picture and recognize 3 sheets”, commented Smart Engines CEO Vladimir Arlazarov, PhD in Computer Science.\n<BLOCK>text[145, 461, 863, 526]<FORK>Compared to the earlier version, Smart Document Engine gives the user new tools to monitor recognition results. The system displays the coordinates of all text objects in the image and other supporting information. For example, the degree of recognition confidence in a text string, a word, or each individual character. By using this data, the system user can further analyze the recognition result.\n<BLOCK>text[145, 541, 861, 588]<FORK>So, Smart Document Engine helps businesses not only to optimize the document entry processes, but also to solve other problems such as, for instance, finding documents in real time by keywords or creating electronic archives.\n<BLOCK>text[145, 604, 848, 669]<FORK>“We are proud to say that Smart Engines provides all the tools required to manage business documents. We can recognize ID documents, bank cards, barcodes, bills, payments and so on. The technology that allows you to recognize documents from a piece of paper is another of our great accomplishments, to which we have been pursuing for 10 years”, – adds Vladimir Arlazarov.\n<BLOCK>text[144, 684, 828, 734]<FORK>The system supports recognition of documents in 20 languages, including English, French, Spanish, German, Italian, Polish, Swedish, Czech, Croatian, Serbian, Bulgarian, Kazakh, Cyrillic and Latin, Generalized Latin, Turkish, Chinese, Korean, Japanese, Arabic and Hebrew.\n<BLOCK>text[142, 749, 859, 798]<FORK>It supports a wide class of operating systems, including specialized operating systems for personal data processing: Cent OS, Ubuntu, Red Hat Enterprise Linux, SUSE Linux Enterprise Server, Arch Linux and other Linux distributions, MS Windows, macOS, iOS, Android.\n<BLOCK>title[142, 814, 298, 829]<FORK>Smart Engines Team"
     },
@@ -62,16 +66,300 @@
       "peak_allocated_gb": 4.287877082824707,
       "peak_reserved_gb": 5.359375,
       "latency_seconds": [
-        47.284797836095095,
-        46.78660896420479,
-        46.78627323359251
+        47.16413173824549,
+        47.03899094462395,
+        47.05428984761238
       ],
-      "latency_median_seconds": 46.78660896420479,
+      "latency_median_seconds": 47.05428984761238,
       "output_tokens": 732,
-      "tokens_per_second": 15.64550233935599,
-      "accuracy": null,
+      "tokens_per_second": 15.556498724571506,
+      "accuracy": {
+        "ground_truth": "data/en_image2.txt",
+        "cer": 0.007903650733910425,
+        "wer": 0.020833333333333332
+      },
       "deterministic": true,
       "prediction": "<PAGE><BLOCK>title[464, 85, 533, 104]<FORK>Text 1\n<BLOCK>text[115, 119, 849, 210]<FORK>This is an edited extract from a newspaper article by Charles Dickens. It appeared in his own newspaper Household Words and concerned \"ragged schooling\". Ragged schools provided education for poor children at a time when you either had to pay or be part of a church. It was published on 13th March 1852.\n<BLOCK>title[115, 224, 327, 243]<FORK>A Sleep to Startle Us\n<BLOCK>text[95, 253, 883, 432]<FORK>A few years hence, and we of the present generation will find it not an easy task to recall, in the thriving street which will arise upon this spot, the wooden barriers and hoardings - the passages that lead to nothing - the glimpses of 5obscene Field Lane and Saffron Hill - the mounds of earth, old bricks, and oyster-shells - the arched foundations of unbuilt houses - the backs of miserable tenements with patched windows - the odds and ends of fever-stricken courts and alleys - which are the present features of the place. Not less perplexing do I find it now, to reckon how many years have passed since I 10traversed these byways one night before they were laid bare, to find out the first Ragged School.\n<BLOCK>text[95, 440, 863, 514]<FORK>If I say it is ten years ago, I leave a handsome margin. The discovery was then newly made ... that out of these noxious sinks where they were born to perish, and where the general ruin was hatching day and night, the people 15 may come to be improved.\n<BLOCK>text[115, 522, 816, 561]<FORK>I found my first Ragged School, in an obscure place called West Street, Saffron Hill, pitifully struggling for life, under every disadvantage.\n<BLOCK>text[92, 569, 866, 677]<FORK>The number of houseless creatures who resorted to it, and who were necessarily turned out when it closed, to hide where they could in heaps of 20moral and physical pollution, filled the managers with pity. To relieve some of the more constant and deserving scholars, they rented a wretched house, where a few common beds - a dozen or a dozen-and-a-half perhaps - were made upon the floor.\n<BLOCK>text[92, 685, 871, 777]<FORK>The air was bad; the dark and ruinous building, with its small close rooms, 25 was quite unsuited to the purpose; and a general supervision of the scattered sleepers was impossible. I had great doubts at the time whether, excepting that they found a crazy shelter for their heads, they were better there than in the streets.\n<BLOCK>text[92, 785, 863, 913]<FORK>All were employed in mending, either their own dilapidated clothes or shoes, 30 or the dilapidated clothes or shoes of some of the other pupils. They were of all ages, from young boys to old men. They were quiet, and intent upon their work. Some of them were almost as unused to it as I should have shown myself to be if I had tried my hand, but all were deeply interested and profoundly anxious to do it somehow or other. They presented a very 35 remarkable instance of the general desire there is, after all, even in the"
+    },
+    {
+      "image": "data/syn_01_en_report.png",
+      "peak_allocated_gb": 4.368196487426758,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        12.118015713989735,
+        12.128020212054253,
+        12.111697152256966
+      ],
+      "latency_median_seconds": 12.118015713989735,
+      "output_tokens": 181,
+      "tokens_per_second": 14.93643879261876,
+      "accuracy": {
+        "ground_truth": "data/syn_01_en_report.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title<LEVEL1>[85, 65, 593, 92]<FORK>Annual Maintenance Report 2025\n<BLOCK>text[82, 120, 904, 219]<FORK>The northern pumping station completed its scheduled maintenance in October. Engineers replaced two worn impellers, recalibrated the flow sensors and installed a new backup generator. The station was offline for nine days, which was two days shorter than planned.\n<BLOCK>text[82, 236, 862, 309]<FORK>Water quality remained within all regulatory limits during the work. Temporary supply was provided from the eastern reservoir, and no customer reported an interruption of service.\n<BLOCK>text[82, 327, 915, 400]<FORK>For the coming year the team recommends replacing the control software, which is no longer supported by its vendor, and adding remote monitoring to the three smaller stations in the valley."
+    },
+    {
+      "image": "data/syn_02_en_twocol.png",
+      "peak_allocated_gb": 4.368191719055176,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        14.825475547462702,
+        14.815504897385836,
+        14.840191785246134
+      ],
+      "latency_median_seconds": 14.825475547462702,
+      "output_tokens": 224,
+      "tokens_per_second": 15.109127480118934,
+      "accuracy": {
+        "ground_truth": "data/syn_02_en_twocol.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title<LEVEL1>[85, 65, 496, 91]<FORK>Notes on Urban Gardens\n<BLOCK>text[82, 118, 468, 295]<FORK>Community gardens have spread quickly through older neighbourhoods. Many began on empty lots that had been fenced off for years, and residents simply asked the owners for permission to plant.\n<BLOCK>text[82, 312, 456, 461]<FORK>The first harvests were small, but the gardens soon became meeting places. Older residents taught younger ones how to prepare soil, save seeds and protect seedlings from late frost.\n<BLOCK>text[518, 118, 912, 269]<FORK>City planners now include garden space in new housing projects. They argue that a shared garden costs little to maintain and gives people a reason to spend time outdoors with their neighbours.\n<BLOCK>text[518, 287, 900, 438]<FORK>Critics point out that some gardens are used only by a few families. Successful projects usually have a small committee, clear rules for each plot and an open day for visitors every month."
+    },
+    {
+      "image": "data/syn_03_en_form.png",
+      "peak_allocated_gb": 4.368202209472656,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        18.716012589633465,
+        18.718084577471018,
+        18.72914505377412
+      ],
+      "latency_median_seconds": 18.718084577471018,
+      "output_tokens": 284,
+      "tokens_per_second": 15.172492614005005,
+      "accuracy": {
+        "ground_truth": "data/syn_03_en_form.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title<LEVEL1>[85, 63, 613, 93]<FORK>Library Membership Application\n<BLOCK>text[84, 119, 362, 139]<FORK>Full name: Daniel Okafor\n<BLOCK>text[85, 144, 395, 163]<FORK>Date of birth: 14 March 1991\n<BLOCK>text[86, 170, 470, 190]<FORK>Address: 27 Harbour Road, Flat 4B\n<BLOCK>text[86, 196, 296, 216]<FORK>City: Port Elizabeth\n<BLOCK>text[86, 222, 282, 240]<FORK>Postal code: 6001\n<BLOCK>text[86, 248, 410, 269]<FORK>Email: d.okafor@example.org\n<BLOCK>text[86, 273, 358, 292]<FORK>Phone: +27 41 555 0183\n<BLOCK>text[86, 299, 442, 320]<FORK>Membership type: Adult (annual)\n<BLOCK>text[86, 325, 446, 346]<FORK>Preferred branch: Central Library\n<BLOCK>text[86, 350, 312, 371]<FORK>Signature: D. Okafor\n<BLOCK>text[86, 376, 348, 395]<FORK>Date: 2 November 2026"
+    },
+    {
+      "image": "data/syn_04_en_numbers.png",
+      "peak_allocated_gb": 4.368196964263916,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        22.84651093930006,
+        22.85807317495346,
+        22.891281343996525
+      ],
+      "latency_median_seconds": 22.85807317495346,
+      "output_tokens": 350,
+      "tokens_per_second": 15.311876785113695,
+      "accuracy": {
+        "ground_truth": "data/syn_04_en_numbers.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title<LEVEL1>[86, 62, 433, 87]<FORK>Invoice INV-2026-0417\n<BLOCK>text[84, 118, 462, 137]<FORK>Issued: 03/11/2026 Due: 03/12/2026\n<BLOCK>text[85, 144, 306, 162]<FORK>Customer ID: C-88213\n<BLOCK>text[85, 170, 476, 189]<FORK>Item 1: Laser printer toner x 4 = 236.00\n<BLOCK>text[86, 195, 538, 214]<FORK>Item 2: A4 paper, 80 g/m2, 10 boxes = 412.50\n<BLOCK>text[86, 221, 451, 239]<FORK>Item 3: USB-C cable 2 m x 12 = 95.88\n<BLOCK>text[86, 246, 479, 265]<FORK>Item 4: Service call (2.5 hours) = 187.50\n<BLOCK>text[86, 272, 252, 290]<FORK>Subtotal: 931.88\n<BLOCK>text[86, 298, 255, 315]<FORK>VAT 15%: 139.78\n<BLOCK>text[86, 323, 280, 342]<FORK>Total due: 1,071.66\n<BLOCK>text[86, 349, 394, 367]<FORK>Account: 4021 7730 0098 1256\n<BLOCK>text[86, 375, 338, 393]<FORK>Reference: PO 55-1093-A"
+    },
+    {
+      "image": "data/syn_05_en_degraded.png",
+      "peak_allocated_gb": 4.881565570831299,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        10.141446307301521,
+        10.139490861445665,
+        10.151081666350365
+      ],
+      "latency_median_seconds": 10.141446307301521,
+      "output_tokens": 149,
+      "tokens_per_second": 14.692184475968157,
+      "accuracy": {
+        "ground_truth": "data/syn_05_en_degraded.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[86, 76, 423, 105]<FORK>Field Survey Summary\n<BLOCK>text[89, 121, 860, 177]<FORK>The survey team visited fourteen sites along the river between May and July. At each site they recorded water depth, bank erosion and the number of nesting birds.\n<BLOCK>text[89, 185, 874, 265]<FORK>Erosion was strongest below the old bridge, where the bank has retreated by almost two metres since the previous survey. The team recommends planting willows to stabilise the soil.\n<BLOCK>text[92, 273, 874, 329]<FORK>Bird numbers were similar to last year, although two species were seen for the first time."
+    },
+    {
+      "image": "data/syn_06_en_lowres.png",
+      "peak_allocated_gb": 4.287892818450928,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        7.313000567257404,
+        7.3427375964820385,
+        7.318242583423853
+      ],
+      "latency_median_seconds": 7.318242583423853,
+      "output_tokens": 108,
+      "tokens_per_second": 14.75764143766221,
+      "accuracy": {
+        "ground_truth": "data/syn_06_en_lowres.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title<LEVEL1>[84, 66, 401, 95]<FORK>Customer Notice\n<BLOCK>text[83, 120, 905, 169]<FORK>Our office will be closed on Friday for staff training. Orders placed on Thursday evening will be processed on Monday morning.\n<BLOCK>text[83, 185, 881, 260]<FORK>If you need urgent help, please call the support line, which remains open from eight in the morning until six in the evening. We apologise for any inconvenience."
+    },
+    {
+      "image": "data/syn_07_en_code.png",
+      "peak_allocated_gb": 4.3681960105896,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        18.067913491278887,
+        18.15452468395233,
+        18.074625123292208
+      ],
+      "latency_median_seconds": 18.074625123292208,
+      "output_tokens": 274,
+      "tokens_per_second": 15.159373880839427,
+      "accuracy": {
+        "ground_truth": "data/syn_07_en_code.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title<LEVEL1>[85, 65, 588, 91]<FORK>Server Setup Checklist\n<BLOCK>other[85, 119, 816, 319]<FORK>\n<BLOCK>text[85, 119, 788, 139]<FORK>1. Update packages: apt update && apt upgrade -y\n<BLOCK>text[85, 145, 816, 163]<FORK>2. Create user: adduser deploy --disabled-password\n<BLOCK>text[85, 171, 785, 190]<FORK>3. Copy key to /home/deploy/.ssh/authorized_keys\n<BLOCK>text[85, 197, 670, 216]<FORK>4. Set port 2222 in /etc/ssh/sshd_config\n<BLOCK>text[85, 222, 642, 242]<FORK>5. Enable firewall: ufw allow 2222/tcp\n<BLOCK>text[85, 248, 700, 266]<FORK>6. Restart service: systemctl restart sshd\n<BLOCK>text[85, 274, 800, 293]<FORK>7. Check status: systemctl status sshd --no-pager\n<BLOCK>text[85, 299, 642, 319]<FORK>8. Log result in ops/log_2026-11-04.md"
+    },
+    {
+      "image": "data/syn_08_de.png",
+      "peak_allocated_gb": 4.368206024169922,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        10.385982681065798,
+        10.3926922082901,
+        10.379413332790136
+      ],
+      "latency_median_seconds": 10.385982681065798,
+      "output_tokens": 154,
+      "tokens_per_second": 14.827677334832288,
+      "accuracy": {
+        "ground_truth": "data/syn_08_de.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[88, 64, 609, 89]<FORK>Bericht über die Stadtbibliothek\n<BLOCK>text[88, 120, 900, 215]<FORK>Die Stadtbibliothek hat im vergangenen Jahr mehr als zwölftausend neue Leser gewonnen. Besonders beliebt waren die Lesestunden für Kinder und die Kurse für ältere Menschen, die den Umgang mit Tablets lernen möchten.\n<BLOCK>text[88, 235, 880, 307]<FORK>Für das nächste Jahr plant die Bibliothek längere Öffnungszeiten am Samstag. Außerdem sollen größere Arbeitsplätze für Schüler eingerichtet werden, die dort ruhig lernen möchten."
+    },
+    {
+      "image": "data/syn_09_fr.png",
+      "peak_allocated_gb": 4.368199825286865,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        10.324946984648705,
+        10.340918991714716,
+        10.342764880508184
+      ],
+      "latency_median_seconds": 10.340918991714716,
+      "output_tokens": 153,
+      "tokens_per_second": 14.795590229706438,
+      "accuracy": {
+        "ground_truth": "data/syn_09_fr.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[85, 65, 507, 92]<FORK>Compte rendu de la réunion\n<BLOCK>text[83, 120, 914, 167]<FORK>La réunion s'est tenue mardi à la mairie. Les habitants ont exprimé leur inquiétude au sujet de la circulation près de l'école, où les voitures roulent souvent trop vite.\n<BLOCK>text[84, 185, 868, 258]<FORK>Le maire a promis d'installer deux ralentisseurs avant l'été et d'étudier la création d'une piste cyclable. Une nouvelle réunion aura lieu en février pour présenter le projet détaillé."
+    },
+    {
+      "image": "data/syn_10_es.png",
+      "peak_allocated_gb": 4.368211269378662,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        9.268024019896984,
+        9.239481452852488,
+        9.234285425394773
+      ],
+      "latency_median_seconds": 9.239481452852488,
+      "output_tokens": 136,
+      "tokens_per_second": 14.719440770998352,
+      "accuracy": {
+        "ground_truth": "data/syn_10_es.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[85, 65, 605, 92]<FORK>Informe sobre el huerto escolar\n<BLOCK>text[83, 120, 878, 194]<FORK>¿Qué aprendieron los alumnos este año? Además de cultivar tomates y pimientos, los niños midieron el crecimiento de las plantas y anotaron los resultados en un cuaderno compartido.\n<BLOCK>text[83, 211, 909, 285]<FORK>¡La cosecha fue excelente! El próximo año la escuela quiere añadir un pequeño invernadero y organizar una feria donde las familias puedan probar lo que los alumnos han cultivado."
+    },
+    {
+      "image": "data/syn_11_ru.png",
+      "peak_allocated_gb": 4.368208408355713,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        9.027939517050982,
+        9.036938518285751,
+        9.044602774083614
+      ],
+      "latency_median_seconds": 9.036938518285751,
+      "output_tokens": 133,
+      "tokens_per_second": 14.717373558631806,
+      "accuracy": {
+        "ground_truth": "data/syn_11_ru.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[88, 65, 468, 93]<FORK>Отчёт о работе музея\n<BLOCK>text[88, 121, 878, 191]<FORK>В прошлом году музей посетили более сорока тысяч человек. Самой популярной стала выставка старых фотографий города, которую подготовили вместе с местными жителями.\n<BLOCK>text[88, 212, 896, 283]<FORK>В следующем году музей планирует открыть новый зал для детей и проводить экскурсии по выходным. Кроме того, часть коллекции будет доступна в интернете."
+    },
+    {
+      "image": "data/syn_12_zh.png",
+      "peak_allocated_gb": 4.368190765380859,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        7.187013451009989,
+        7.192772123962641,
+        7.1934558637440205
+      ],
+      "latency_median_seconds": 7.192772123962641,
+      "output_tokens": 104,
+      "tokens_per_second": 14.458959384174726,
+      "accuracy": {
+        "ground_truth": "data/syn_12_zh.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[84, 66, 425, 96]<FORK>社区图书馆年度报告\n<BLOCK>text[82, 121, 913, 169]<FORK>去年社区图书馆共接待读者三万多人次。儿童阅读活动和老年人电脑课程最受欢迎，许多家庭每周都会来参加。\n<BLOCK>text[82, 186, 914, 234]<FORK>明年图书馆计划延长周末的开放时间，并增加安静的学习区域。我们也希望更多志愿者加入，帮助整理图书和组织活动。"
+    },
+    {
+      "image": "data/syn_13_ja.png",
+      "peak_allocated_gb": 4.368192672729492,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        8.942968998104334,
+        8.959239229559898,
+        8.968999672681093
+      ],
+      "latency_median_seconds": 8.959239229559898,
+      "output_tokens": 132,
+      "tokens_per_second": 14.733393831530067,
+      "accuracy": {
+        "ground_truth": "data/syn_13_ja.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[88, 62, 421, 89]<FORK>市民農園のお知らせ\n<BLOCK>text[88, 118, 909, 164]<FORK>今年の市民農園では、四十の区画すべてが利用されました。参加者はトマトやナスを育て、収穫祭には多くの家族が集まりました。\n<BLOCK>text[88, 183, 909, 229]<FORK>来年は水道設備を新しくし、子ども向けの体験教室を毎月開く予定です。申し込みは十二月から市役所で受け付けます。"
+    },
+    {
+      "image": "data/syn_14_ko.png",
+      "peak_allocated_gb": 4.3681960105896,
+      "peak_reserved_gb": 5.359375,
+      "latency_seconds": [
+        9.374431993812323,
+        9.319220636039972,
+        9.300730913877487
+      ],
+      "latency_median_seconds": 9.319220636039972,
+      "output_tokens": 138,
+      "tokens_per_second": 14.808105247161581,
+      "accuracy": {
+        "ground_truth": "data/syn_14_ko.txt",
+        "cer": 0.0,
+        "wer": 0.0
+      },
+      "deterministic": true,
+      "prediction": "<PAGE><BLOCK>title[87, 67, 463, 96]<FORK>마을 도서관 운영 보고\n<BLOCK>text[85, 120, 854, 170]<FORK>작년에 마을 도서관을 찾은 사람은 이만 명이 넘었습니다. 어린이 독서\n모임과 어르신 컴퓨터 교실이 특히 인기가 많았습니다.\n<BLOCK>text[85, 186, 911, 235]<FORK>내년에는 주말 운영 시간을 늘리고 조용한 공부 공간을 더 만들 계획입니다.\n자원봉사자 모집도 곧 시작합니다."
     }
   ],
   "environment": {
@@ -80,6 +368,6 @@
     "cuda": "13.0",
     "transformers": "4.52.1",
     "bitsandbytes": "0.50.2",
-    "timestamp": "2026-11-04T07:53:28+00:00"
+    "timestamp": "2026-11-04T08:48:08+00:00"
   }
 }

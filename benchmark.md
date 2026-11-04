@@ -61,7 +61,7 @@ is a manual transcription (margin line numbers excluded).
 
 | | bf16 | INT8 | NF4 | NF4 skip-vision |
 |---|---|---|---|---|
-| Weights | 6.23 GB | 3.80 GB | **2.04 GB** | n/a |
+| Weights | 6.23 GB | 3.80 GB | **2.04 GB** | 2.58 GB |
 | **Peak GPU memory** | 7.39 GB | 4.88 GB | **3.17 GB** | 3.69 GB |
 | Peak memory vs bf16 | — | −34% | **−57%** | −50% |
 | **Mean time per page** | **6.73 s** | 16.88 s | 7.86 s | 7.93 s |
@@ -71,8 +71,7 @@ is a manual transcription (margin line numbers excluded).
 | Mean WER | 0.247% | 0.247% | **0.234%** | **0.234%** |
 | Same output in all 3 runs | yes | yes | yes | yes |
 
-GB = GiB (1024³ bytes). Weights from the model's memory footprint after loading (3-page runs; weights
-do not depend on the pages). NF4 skip-vision weights were not printed.
+GB = GiB (1024³ bytes). Weights from the model's memory footprint after loading.
 
 ### CER per page
 
