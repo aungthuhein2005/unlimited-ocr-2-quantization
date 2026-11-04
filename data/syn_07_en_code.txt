@@ -1,0 +1,9 @@
+Server Setup Checklist
+1. Update packages: apt update && apt upgrade -y
+2. Create user: adduser deploy --disabled-password
+3. Copy key to /home/deploy/.ssh/authorized_keys
+4. Set port 2222 in /etc/ssh/sshd_config
+5. Enable firewall: ufw allow 2222/tcp
+6. Restart service: systemctl restart sshd
+7. Check status: systemctl status sshd --no-pager
+8. Log result in ops/log_2026-11-04.md

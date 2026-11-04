@@ -6,7 +6,7 @@
 #SBATCH --gres=gpu:3g.71gb:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=128G
-#SBATCH --time=01:00:00
+#SBATCH --time=03:00:00
 # Usage (from the project root): sbatch run_ocr.sbatch [--images data/*.png] [--output results/bf16.json]
 # The GPU node is split into MIG slices (sinfo -o "%P %G"): 1g.18gb, 1g.35gb, 3g.71gb, 7g.141gb.
 # Keep the same slice for every run so bf16 vs quantized timings are comparable.

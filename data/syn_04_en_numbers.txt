@@ -1,0 +1,12 @@
+Invoice INV-2026-0417
+Issued: 03/11/2026  Due: 03/12/2026
+Customer ID: C-88213
+Item 1: Laser printer toner x 4 = 236.00
+Item 2: A4 paper, 80 g/m2, 10 boxes = 412.50
+Item 3: USB-C cable 2 m x 12 = 95.88
+Item 4: Service call (2.5 hours) = 187.50
+Subtotal: 931.88
+VAT 15%: 139.78
+Total due: 1,071.66
+Account: 4021 7730 0098 1256
+Reference: PO 55-1093-A

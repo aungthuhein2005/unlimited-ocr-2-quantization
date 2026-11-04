@@ -1,0 +1,12 @@
+Library Membership Application
+Full name: Daniel Okafor
+Date of birth: 14 March 1991
+Address: 27 Harbour Road, Flat 4B
+City: Port Elizabeth
+Postal code: 6001
+Email: d.okafor@example.org
+Phone: +27 41 555 0183
+Membership type: Adult (annual)
+Preferred branch: Central Library
+Signature: D. Okafor
+Date: 2 November 2026

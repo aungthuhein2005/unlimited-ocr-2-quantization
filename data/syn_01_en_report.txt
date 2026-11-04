@@ -1,0 +1,4 @@
+Annual Maintenance Report 2025
+The northern pumping station completed its scheduled maintenance in October. Engineers replaced two worn impellers, recalibrated the flow sensors and installed a new backup generator. The station was offline for nine days, which was two days shorter than planned.
+Water quality remained within all regulatory limits during the work. Temporary supply was provided from the eastern reservoir, and no customer reported an interruption of service.
+For the coming year the team recommends replacing the control software, which is no longer supported by its vendor, and adding remote monitoring to the three smaller stations in the valley.
