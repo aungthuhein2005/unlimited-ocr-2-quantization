@@ -24,7 +24,7 @@ GB = 1024**3
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--output", default="export/Unlimited-OCR-2-bnb-nf4")
-parser.add_argument("--repo-id", default="aungthuhein2005/Unlimited-OCR-2-bnb-nf4",
+parser.add_argument("--repo-id", default="aungthuhein-dev/Unlimited-OCR-2-bnb-nf4",
                     help="Hugging Face repo name used in the model card's usage example")
 parser.add_argument("--test-image", default="data/en_image.png")
 args = parser.parse_args()
