@@ -12,6 +12,8 @@
 ![PyTorch](https://img.shields.io/badge/torch-2.13.0-EE4C2C)
 ![Transformers](https://img.shields.io/badge/transformers-4.52.1-yellow)
 
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Unlimited--OCR--2--bnb--nf4-FFD21E)](https://huggingface.co/aungthuhein-dev/Unlimited-OCR-2-bnb-nf4)
+
 </div>
 
 ---
@@ -74,6 +76,35 @@ about 3.2 B parameters in linear layers, 76.5% of them in the experts.
 > [!IMPORTANT]
 > Only 3 real pages were tested; the synthetic pages are read perfectly by every variant.
 > Accuracy differences below ~0.1% CER are not significant. See [benchmark.md](benchmark.md#limitations).
+
+## Download the NF4 model
+
+The NF4 variant is published on Hugging Face as
+[**aungthuhein-dev/Unlimited-OCR-2-bnb-nf4**](https://huggingface.co/aungthuhein-dev/Unlimited-OCR-2-bnb-nf4)
+(2.24 GB, listed under the base model's Quantizations).
+
+```python
+import torch
+from transformers import AutoModel, AutoTokenizer
+
+repo = "aungthuhein-dev/Unlimited-OCR-2-bnb-nf4"
+tokenizer = AutoTokenizer.from_pretrained(repo, trust_remote_code=True)
+model = AutoModel.from_pretrained(
+    repo, trust_remote_code=True, device_map="auto", torch_dtype=torch.bfloat16,
+).eval()
+
+text = model.infer(tokenizer, image_file="page.png", eval_mode=True)
+print(text)
+```
+
+> [!CAUTION]
+> `torch_dtype=torch.bfloat16` is required. Without it the non-quantized layers load in float16 and
+> inference fails with `Input type (c10::BFloat16) and bias type (c10::Half) should be the same`.
+> Hugging Face's auto-generated "Use this model" snippets omit it.
+
+The export is made with [`scripts/export_nf4.py`](scripts/export_nf4.py), which keeps the original
+`config.json`: `save_pretrained` otherwise writes changed DASH attention settings and the reloaded
+model reads pages as garbage.
 
 ## Variants
 

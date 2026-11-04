@@ -8,6 +8,10 @@ bitsandbytes, measured on an HPC GPU. Detailed working notes are in [`docs/`](do
 **NF4 (4-bit) on all layers cuts peak GPU memory by 57% (7.39 → 3.17 GB) for ~17% slower inference,
 with the same OCR accuracy as bf16. INT8 is not worth using: it saves less memory and is 2.5× slower.**
 
+The NF4 model is published as
+[aungthuhein-dev/Unlimited-OCR-2-bnb-nf4](https://huggingface.co/aungthuhein-dev/Unlimited-OCR-2-bnb-nf4)
+(load with `torch_dtype=torch.bfloat16`).
+
 ## Model
 
 | | |
@@ -141,6 +145,8 @@ do not depend on the pages). NF4 skip-vision weights were not printed.
 | Triton `CompilationError: Block pointers have been removed` | torch 2.15 ships Triton 3.9, which removed `tl.make_block_ptr` used by the model | pinned `torch==2.13.0`, `torchvision==0.28.0` |
 | INT8 `ValueError: Only two or three dimensional matrices are supported` | SAM encoder passes 4D tensors; bnb int8 matmul accepts 2D/3D only | keep vision modules in bf16 for INT8 |
 | `invalid partition specified: gpu` | cluster has only `defq` with MIG slices | `--partition=defq --gres=gpu:3g.71gb:1` |
+| Exported NF4 crashes: `Input type (c10::BFloat16) and bias type (c10::Half)` | bnb models load non-quantized layers in float16 unless told otherwise | load with `torch_dtype=torch.bfloat16` |
+| Exported NF4 outputs `0,0,0,...` until the token limit | `save_pretrained` wrote changed DASH settings to `config.json` (`dash_topk_blocks` 12 → 64, `dash_stage0` head_cls → indexer) | export keeps the original `config.json` plus `quantization_config` |
 
 ## Reproduce
 

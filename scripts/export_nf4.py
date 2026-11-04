@@ -135,6 +135,9 @@ tags:
 4-bit [bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) NF4 version of
 [baidu/Unlimited-OCR-2](https://huggingface.co/baidu/Unlimited-OCR-2).
 
+> **Load with `torch_dtype=torch.bfloat16`** (see Usage). The auto-generated "Use this model"
+> snippets omit it and fail with a BFloat16 / Half type error.
+
 - **Method:** bitsandbytes NF4, double quantization, bf16 compute
 - **Quantized:** all linear layers (language model, MoE experts, vision encoders)
 - **Calibration:** none (data-free)
